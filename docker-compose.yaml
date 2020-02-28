@@ -1,0 +1,37 @@
+version: '3'
+services:
+  db:
+    image: mysql:8
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - 3306:3306
+    networks:
+      - backend
+    restart: on-failure
+    volumes:
+     - ./db:/var/lib/mysql
+    container_name: db
+  tomcat:
+    image: tomcat:jdk13-openjdk-oracle
+    ports:
+      - "8080:8080"
+    container_name: tomcat
+    volumes:
+      - ./apps/:/usr/local/tomcat/webapps/
+    depends_on:
+      - db
+    networks:
+      - backend
+  adminer:
+    image: adminer
+    container_name: adminer
+    restart: always
+    ports:
+      - 8081:8080
+    depends_on:
+      - db
+    networks:
+      - backend
+networks:      
+  backend:
