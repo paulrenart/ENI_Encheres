@@ -11,6 +11,7 @@ services:
     restart: on-failure
     volumes:
      - ./db:/var/lib/mysql
+     - ./db_init/:/docker-entrypoint-initdb.d/
     container_name: db
   tomcat:
     image: tomcat:jdk13-openjdk-oracle

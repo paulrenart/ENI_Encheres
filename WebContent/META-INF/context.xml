@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context>
+	<Resource
+		name="jdbc/pool_cnx"
+		driverClassName="com.mysql.cj.jdbc.Driver"
+		type="javax.sql.DataSource"
+	
+		url="jdbc:mysql://db:3306/ENCHERES"
+		username="root"
+		password="root"
+		
+		maxTotal="20"
+		maxIdle="10"
+		maxWaitMillis="3000"
+	/>
+</Context>
